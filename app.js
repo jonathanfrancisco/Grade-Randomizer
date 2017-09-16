@@ -8,9 +8,6 @@ var count = 0;
 var yourGrade,randomNumber,rainbowInterval;
 // AUDIOS
 var sounds = [new Audio('sounds/1.mp3'), new Audio('sounds/2.mp3')];
-// var sound = new Audio('sounds/1.mp3');
-// var soundTwo = new Audio('sounds/2.mp3');
-
 var beep = new Audio('sounds/beep.mp3');
 	beep.currentTime = 0.2;
 var dundundun = new Audio('sounds/dundundun.mp3');
@@ -77,16 +74,19 @@ function rainbowAndSound(gradeDiv) {
 
 function reset() {
 	console.log("CALLED");
+
 	beep.pause();
-	beep.setCurrentTime = 0;
 	dundundun.pause();
-	dundundun.setCurrentTime = 0;
 	victory.pause();
-	victory.setCurrentTime = 0;
 	sounds[0].pause();
-	sounds[0].setCurrentTime = 0;
 	sounds[1].pause();
-	sounds[1].setCurrentTime = 0;
+
+	beep.currentTime = 0;
+	dundundun.currentTime = 0;
+	victory.currentTime = 0;
+	sounds[0].currentTime = 0;
+	sounds[1].currentTime = 0;
+
 	clearInterval(randomInterval);
 	clearInterval(rainbowInterval);
 
