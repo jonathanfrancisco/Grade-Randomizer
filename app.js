@@ -29,7 +29,7 @@ function randomGrade() {
 
 	randomInterval = setInterval(function() {
 		randomNumber = Math.floor(Math.random()*divs.length);
-		divs[randomNumber].style.backgroundColor = "red";
+		divs[randomNumber].style.backgroundColor = "#2980b9";
 		setTimeout(function() {
 			divs[randomNumber].style.backgroundColor = "white";
 		},100);
@@ -76,6 +76,7 @@ function rainbowAndSound(gradeDiv) {
 }
 
 function reset() {
+	console.log("CALLED");
 	beep.pause();
 	beep.setCurrentTime = 0;
 	dundundun.pause();

@@ -1,16 +1,25 @@
 
-
+body {
+	background-color: #3498db;
+}
 .container {
-	margin: 0 auto;
+	margin: 5em auto 0;
 	max-width: 750px;
+	background-color: #fff;
+	border-radius: 20px;
+}
+
+h2 {
+	font-family: 'Arvo';
+	font-size: 1.5em;
 }
 
 .container div {	
 	text-align: center;
-	font-family: 'Helvetica';
-	float: left;
-	width: 18.5%;
-	border-radius: 5px;
+	display: inline-block;
+	width: 19.57%;
+	border-radius: 20px;
+	/*border-radius: 5px;
 	margin: 5px;
-	box-shadow: 0px 0px 7px -2px #000;
+	box-shadow: 0px 0px 7px -2px #000;*/
 }
