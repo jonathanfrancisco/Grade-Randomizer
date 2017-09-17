@@ -2,42 +2,46 @@
 
 ///// VARIABLES //////
 
-var divs = document.querySelectorAll('.container div');
-var randomInterval;
-var count = 0;
-var yourGrade,randomNumber,rainbowInterval;
-// AUDIOS
-var sounds = [new Audio('sounds/1.mp3'), new Audio('sounds/2.mp3')];
-var beep = new Audio('sounds/beep.mp3');
+
+const sounds = [new Audio('sounds/1.mp3'), new Audio('sounds/2.mp3')];
+const beep = new Audio('sounds/beep.mp3');
 	beep.currentTime = 0.2;
-var dundundun = new Audio('sounds/dundundun.mp3');
-var victory = new Audio('sounds/victory.mp3')
+const dundundun = new Audio('sounds/dundundun.mp3');
+const victory = new Audio('sounds/victory.mp3')
+let divs = document.querySelectorAll('.container div');
+let randomInterval,
+    rainbowInterval,
+    randomNumber,
+    yourGrade,
+    count = 0;
+
 
 // randomizeGrade and return
 function randomGrade() {
 
 	reset();
 
-	if(randomNumber != null) {
-		divs[randomNumber].style.backgroundColor = "white";
-	}
-	 
 	beep.play();
 
-	randomInterval = setInterval(function() {
+	randomInterval = setInterval( ()=> {
 		randomNumber = Math.floor(Math.random()*divs.length);
 		divs[randomNumber].style.backgroundColor = "#2980b9";
-		setTimeout(function() {
+
+		// wait 0.1 seconds before changing the color to white
+		setTimeout( ()=> {
 			divs[randomNumber].style.backgroundColor = "white";
 		},100);
 
-	
+		// after reaching the count
+		// clear the interval and re-assign count to 0
+		// and play rainbow colors on the randomed grade and sound
 		if(count == 44) {
 			clearInterval(randomInterval);
 			count = 0;
 			rainbowAndSound(divs[randomNumber]);
 		}
-
+		// just before the randomedGrade is selected
+		// play some suspense sound
 		else if(count == 25) {
 			dundundun.play();
 		}
@@ -52,7 +56,7 @@ function randomGrade() {
 // play rainbow colors on the grade and play some awesome sound :)
 function rainbowAndSound(gradeDiv) {
 
-	rainbowInterval = setInterval(function() {
+	rainbowInterval = setInterval( () => {
 		var r = Math.floor(Math.random()*255);
 		var g = Math.floor(Math.random()*255);
 		var b = Math.floor(Math.random()*255);
@@ -73,7 +77,9 @@ function rainbowAndSound(gradeDiv) {
 }
 
 function reset() {
-	console.log("CALLED");
+
+	if(randomNumber != null)
+		divs[randomNumber].style.backgroundColor = "white";
 
 	beep.pause();
 	dundundun.pause();
@@ -94,19 +100,10 @@ function reset() {
 
 
 
-
-
-
-
-
-alert("Press space to generate grade");
-
-document.addEventListener('keydown', function(event) {
-
+document.addEventListener('keydown',(event) => {
 	if(event.keyCode == 32) {
 		randomGrade();
 	}
-
 });
 
 
